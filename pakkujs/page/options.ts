@@ -392,6 +392,14 @@ function loadconfig() {
     id('popup-badge').value = config.POPUP_BADGE;
     id('combine-threads').value = config.COMBINE_THREADS;
     id('read-player-blacklist').checked = config.READ_PLAYER_BLACKLIST;
+    id('dark-mode').checked = config.DARK_MODE;
+    
+    // 应用深色模式
+    if(config.DARK_MODE) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
 
     // advanced options
     if(id('show-advanced').checked) document.body.classList.add('i-am-advanced');
@@ -608,6 +616,7 @@ function update(this: HTMLInputElement) {
     config.POPUP_BADGE = id('popup-badge').value;
     config.COMBINE_THREADS = safe_int(id('combine-threads').value, 0, null, DEFAULT_CONFIG.COMBINE_THREADS);
     config.READ_PLAYER_BLACKLIST = id('read-player-blacklist').checked;
+    config.DARK_MODE = id('dark-mode').checked;
 
     if(this.id === 'break-update') {
         if(this.checked)
@@ -635,7 +644,7 @@ for(let elem of [
     // 实验室
     'break-update', 'takeover-aijudge', 'scroll-threshold',
     // 其他
-    'popup-badge', 'combine-threads', 'read-player-blacklist',
+    'popup-badge', 'combine-threads', 'read-player-blacklist', 'dark-mode',
 ]) {
     id(elem).addEventListener('change', update);
 }

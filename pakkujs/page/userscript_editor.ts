@@ -92,3 +92,14 @@ async function load() {
     }
 }
 void load();
+
+// 应用深色模式
+async function applyDarkMode() {
+    const config = await get_config();
+    if (config.DARK_MODE) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+void applyDarkMode();

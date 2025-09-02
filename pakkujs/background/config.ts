@@ -51,6 +51,8 @@ export const DEFAULT_CONFIG = {
     POPUP_BADGE: 'percent' as ('percent' | 'count' | 'dispval' | 'off'),
     COMBINE_THREADS: 3,
     READ_PLAYER_BLACKLIST: true,
+    // 外观
+    DARK_MODE: false,
 }
 
 const UPDATE_TS_OFFSET = 1e13;
@@ -173,6 +175,14 @@ export function migrate_config(remote_config: AnyObject): Config {
 
         config.TAKEOVER_AIJUDGE = false;
         // we also added the 'dispval' option for POPUP_BADGE, so we have to bump version number to inform old clients.
+    }
+
+    // 4 -> 5
+    if(config._CONFIG_VER < 5) {
+        config._LAST_UPDATE_TIME = gen_timestamp();
+        config._CONFIG_VER = 5;
+
+        config.DARK_MODE = false;
     }
 
     return {...DEFAULT_CONFIG, ...config};

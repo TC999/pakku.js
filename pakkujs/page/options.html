@@ -229,6 +229,59 @@
         body:not(.i-am-advanced) .advanced:not(.js-show-this) {
             display: none;
         }
+        
+        /* 深色模式样式 */
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        body.dark-mode a {
+            color: #569cd6;
+            border-bottom-color: #569cd6;
+        }
+        body.dark-mode label {
+            color: #cccccc;
+        }
+        body.dark-mode code {
+            color: #d69d85;
+            border-bottom-color: #d69d85;
+        }
+        body.dark-mode p.warning {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        body.dark-mode p.warning b {
+            color: #ff7b72;
+            border-bottom-color: #ffffff;
+        }
+        body.dark-mode tr:hover:not(#title) {
+            background-color: #2d2d30;
+            box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+        }
+        body.dark-mode td {
+            border-top-color: #444444;
+        }
+        body.dark-mode input[type="checkbox"],
+        body.dark-mode input[type="number"],
+        body.dark-mode select {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+            border-color: #444444;
+        }
+        body.dark-mode #donate-img {
+            border-color: #888888;
+        }
+        body.dark-mode label[for="show-advanced"], 
+        body.dark-mode .advanced:not(.warning) {
+            background-color: rgba(86, 156, 214, 0.15);
+        }
+        body.dark-mode .btn {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+            border-color: #444444;
+        }
+        body.dark-mode #note-banner-container a[href]:hover {
+            background-color: rgba(86, 156, 214, 0.15);
+        }
     </style>
 </head>
 <body>
@@ -436,6 +489,11 @@
                         </select>
                         <label for="drop-threshold">：</label>
                         <span>瞬时弹幕密度大于阈值时，按比例删除低权重弹幕，优先删除未合并弹幕</span>
+                    </p>
+                    <p>
+                        <input id="dark-mode" type="checkbox">
+                        <label for="dark-mode">深色模式：</label>
+                        <span>启用后，pakku 的选项页面和弹窗将使用深色主题</span>
                     </p>
                     <p class="advanced">
                         <label for="representative-percent">合并后的弹幕显示于 </label>

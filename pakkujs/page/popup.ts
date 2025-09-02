@@ -135,6 +135,13 @@ async function loadui() {
             void chrome.tabs.create({url: chrome.runtime.getURL('/page/userscript_editor.html?tabid='+tabid)});
         };
     }
+    
+    // 应用深色模式
+    if(config.DARK_MODE) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
 }
 
 switch_btn.addEventListener('click', async function() {

@@ -7,31 +7,79 @@
         .display-none {
             display: none;
         }
+        
+        /* 深色模式样式 */
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        body.dark-mode a {
+            color: #569cd6;
+            border-bottom-color: #569cd6;
+        }
+        body.dark-mode .switch {
+            border-color: #444444;
+        }
+        body.dark-mode .switch.on {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+        }
+        body.dark-mode .switch.off {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+        }
+        body.dark-mode .result-table {
+            background-color: #2d2d30;
+        }
+        body.dark-mode .result-table td {
+            border-top-color: #444444;
+        }
+        body.dark-mode .result-table tr#title {
+            background-color: #3c3c3c;
+        }
+        body.dark-mode .result-table tr:hover {
+            background-color: #3c3c3c;
+        }
+        body.dark-mode .result-table .status-header {
+            background-color: #3c3c3c;
+        }
+        body.dark-mode .result-table .status-header-combined {
+            background-color: rgba(86, 156, 214, 0.15);
+        }
+        body.dark-mode .result-table .status-header-deleted {
+            background-color: rgba(255, 123, 114, 0.15);
+        }
+        body.dark-mode .result-table .status-header-ignored {
+            background-color: rgba(163, 230, 53, 0.15);
+        }
+        body.dark-mode .result-table .status-header-modified {
+            background-color: rgba(237, 135, 59, 0.15);
+        }
+        body.dark-mode .result-table .status-header-info {
+            background-color: rgba(163, 190, 255, 0.15);
+        }
+        body.dark-mode .btn {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+            border-color: #444444;
+        }
+        body.dark-mode .btn:hover {
+            background-color: #3c3c3c;
+        }
+        body.dark-mode .command-hint {
+            color: #cccccc;
+        }
+        body.dark-mode code {
+            color: #d69d85;
+            border-bottom-color: #d69d85;
+        }
+        
         body {
             width: 320px;
             background-color: #f7f7f7;
             font-size: 75%;
         }
-        code, kbd, .code {
-            font-family: Consolas, Courier, monospace;
-        }
-        a {
-            color: inherit;
-        }
-        a[data-options-link] {
-            text-decoration: none !important;
-        }
-        a[data-options-link]::after {
-            content: ' ⌾';
-            color: #aaa;
-        }
-        .slim p {
-            margin: .3em;
-            text-align: left;
-        }
-        .clearfix {
-            clear: both;
-        }
+        .clearfix { clear: both; }
         kbd { /* stolen from github */
             display: inline-block;
             padding: 3px 5px;

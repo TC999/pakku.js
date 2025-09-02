@@ -1,10 +1,27 @@
 import {Egress, Ingress} from "../protocol/interface";
 import {AjaxResponse} from "../core/types";
+import {get_config} from '../background/config';
 
 let $sandbox = document.querySelector('#sandbox') as HTMLIFrameElement;
 let $container = document.querySelector('#result-container') as HTMLElement;
 let $download_btn = document.querySelector('#download-btn') as HTMLElement;
 let $clear_btn = document.querySelector('#clear-btn') as HTMLElement;
+
+// 应用深色模式
+async function applyDarkMode() {
+    try {
+        let config = await get_config();
+        if(config.DARK_MODE) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    } catch(e) {
+        console.error('Failed to apply dark mode:', e);
+    }
+}
+
+void applyDarkMode();
 
 function download(filename: string, text: string) {
     let a = document.createElement('a');

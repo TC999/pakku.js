@@ -1,11 +1,28 @@
 import {Egress} from "../protocol/interface";
 import {AnyObject} from "../core/types";
 import {ingress_debug_content} from "../protocol/interface_debug";
+import {get_config} from '../background/config';
 
 let tabid = parseInt(new URLSearchParams(location.search).get('tabid') || '0');
 let $content = document.querySelector('#content') as HTMLElement;
 let $ingress = document.querySelector('#ingress') as HTMLElement;
 let $download = document.querySelector('#download') as HTMLElement;
+
+// 应用深色模式
+async function applyDarkMode() {
+    try {
+        let config = await get_config();
+        if(config.DARK_MODE) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    } catch(e) {
+        console.error('Failed to apply dark mode:', e);
+    }
+}
+
+void applyDarkMode();
 
 let options: {[k: string]: string} = {};
 for(let input of document.querySelectorAll('input[type=radio]:checked') as NodeListOf<HTMLInputElement>) {

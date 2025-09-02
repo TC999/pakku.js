@@ -4,17 +4,45 @@
     <meta charset="utf-8">
     <title>pakku :: 处理本地弹幕</title>
     <style>
-        body {
-            transition: background-color .15s ease-out, opacity .15s ease-out;
-        }
-        .dragged {
-            background-color: #bbf;
-            opacity: .15;
-        }
-        #sandbox {
-            display: none;
-        }
-    </style>
+            body {
+                transition: background-color .15s ease-out, opacity .15s ease-out;
+            }
+            .dragged {
+                background-color: #bbf;
+                opacity: .15;
+            }
+            #sandbox {
+                display: none;
+            }
+            
+            /* 深色模式样式 */
+            body.dark-mode {
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+            }
+            body.dark-mode fieldset {
+                background-color: #2d2d30;
+                border-color: #444444;
+            }
+            body.dark-mode legend {
+                color: #cccccc;
+            }
+            body.dark-mode button {
+                background-color: #2d2d30;
+                color: #d4d4d4;
+                border-color: #444444;
+            }
+            body.dark-mode label {
+                color: #cccccc;
+            }
+            body.dark-mode input[type="radio"] {
+                accent-color: #569cd6;
+            }
+            body.dark-mode .dragged {
+                background-color: #2a2a4f;
+                opacity: .3;
+            }
+        </style>
 </head>
 <body>
     <fieldset>
