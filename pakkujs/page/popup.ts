@@ -43,6 +43,14 @@ function get_tabid_and_loadui() {
 async function loadui() {
     let state = await get_state();
     let enabled = state.GLOBAL_SWITCH;
+    let config = await get_config();
+    
+    // 应用深色模式
+    if(config.DARK_MODE) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
 
     switch_btn.classList.add(enabled ? 'on' : 'off');
     switch_btn.classList.remove(enabled ? 'off' : 'on');
@@ -128,19 +136,11 @@ async function loadui() {
             rows[0].classList.add('first-item');
     }
 
-    let config = await get_config();
     if(config.ADVANCED_USER) {
         id('userscript-btn').classList.remove('display-none');
         id('userscript-btn').onclick = function() {
             void chrome.tabs.create({url: chrome.runtime.getURL('/page/userscript_editor.html?tabid='+tabid)});
         };
-    }
-    
-    // 应用深色模式
-    if(config.DARK_MODE) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
     }
 }
 
