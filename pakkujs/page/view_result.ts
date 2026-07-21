@@ -2,6 +2,20 @@ import {Egress} from "../protocol/interface";
 import {AnyObject} from "../core/types";
 import {ingress_debug_content} from "../protocol/interface_debug";
 
+import {get_config} from '../background/config';
+
+function apply_theme(theme: string) {
+    if(theme === 'auto') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.dataset['theme'] = theme;
+    }
+}
+
+get_config().then((config)=>{
+    apply_theme(config.THEME);
+});
+
 let tabid = parseInt(new URLSearchParams(location.search).get('tabid') || '0');
 let $content = document.querySelector('#content') as HTMLElement;
 let $ingress = document.querySelector('#ingress') as HTMLElement;

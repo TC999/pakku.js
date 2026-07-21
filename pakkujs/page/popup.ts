@@ -33,6 +33,14 @@ chrome.commands.getAll(function(cmds) {
 let tabid = 0;
 let blacklist_rows: HTMLElement[] = [];
 
+function apply_theme(theme: string) {
+    if(theme === 'auto') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.dataset['theme'] = theme;
+    }
+}
+
 function get_tabid_and_loadui() {
     chrome.tabs.query({active: true, currentWindow: true}, function(d) {
         tabid = d[0]?.id || 0;
@@ -129,6 +137,7 @@ async function loadui() {
     }
 
     let config = await get_config();
+    apply_theme(config.THEME);
     if(config.ADVANCED_USER) {
         id('userscript-btn').classList.remove('display-none');
         id('userscript-btn').onclick = function() {

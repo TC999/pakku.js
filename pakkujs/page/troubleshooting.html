@@ -4,13 +4,43 @@
         <meta charset="utf-8">
         <title>pakku :: 报告问题</title>
         <style>
+            :root {
+                --bg-body: #fff;
+                --bg-debug: lightblue;
+                --border-debug: blue;
+                --text-default: #000;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg-body: #1e1e2e;
+                    --bg-debug: #2d4a5a;
+                    --border-debug: #89b4fa;
+                    --text-default: #cdd6f4;
+                }
+            }
+            [data-theme="dark"] {
+                --bg-body: #1e1e2e;
+                --bg-debug: #2d4a5a;
+                --border-debug: #89b4fa;
+                --text-default: #cdd6f4;
+            }
+            [data-theme="light"] {
+                --bg-body: #fff;
+                --bg-debug: lightblue;
+                --border-debug: blue;
+                --text-default: #000;
+            }
+            body {
+                background-color: var(--bg-body);
+                color: var(--text-default);
+            }
             #debug-box, #debug-box pre {
                 font-family: Consolas, Courier, monospace;
             }
             #debug-box {
                 width: calc(100% - 10px);
-                border: 5px solid blue;
-                background-color: lightblue;
+                border: 5px solid var(--border-debug);
+                background-color: var(--bg-debug);
             }
             #debug-box pre {
                 line-height: .5em;

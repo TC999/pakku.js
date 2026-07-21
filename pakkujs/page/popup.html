@@ -4,12 +4,91 @@
     <meta charset="utf-8">
     <title>pakku :: 信息</title>
     <style>
+        :root {
+            --bg-body: #f7f7f7;
+            --bg-switch-on: #dfd;
+            --bg-switch-off: #ddd;
+            --bg-hover: #fdfdfd;
+            --bg-exception: #ffaaaa;
+            --bg-kbd: #fafbfc;
+            --text-default: #000;
+            --text-status-combined: #008800;
+            --text-status-deleted: #bb0000;
+            --text-status-ignored: #555555;
+            --text-status-modified: #0000bb;
+            --text-status-info: black;
+            --text-kbd: #444d56;
+            --text-link-arrow: #aaa;
+            --border-kbd: #c6cbd1;
+            --border-kbd-bottom: #959da5;
+            --shadow-kbd: #959da5;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #1e1e2e;
+                --bg-switch-on: #2a5a3a;
+                --bg-switch-off: #2a2a3e;
+                --bg-hover: #2a2a3e;
+                --bg-exception: #5a2a2a;
+                --bg-kbd: #2a2a3e;
+                --text-default: #cdd6f4;
+                --text-status-combined: #a6e3a1;
+                --text-status-deleted: #f38ba8;
+                --text-status-ignored: #a6adc8;
+                --text-status-modified: #89b4fa;
+                --text-status-info: #cdd6f4;
+                --text-kbd: #cdd6f4;
+                --text-link-arrow: #585b70;
+                --border-kbd: #45475a;
+                --border-kbd-bottom: #585b70;
+                --shadow-kbd: #585b70;
+            }
+        }
+        [data-theme="dark"] {
+            --bg-body: #1e1e2e;
+            --bg-switch-on: #2a5a3a;
+            --bg-switch-off: #2a2a3e;
+            --bg-hover: #2a2a3e;
+            --bg-exception: #5a2a2a;
+            --bg-kbd: #2a2a3e;
+            --text-default: #cdd6f4;
+            --text-status-combined: #a6e3a1;
+            --text-status-deleted: #f38ba8;
+            --text-status-ignored: #a6adc8;
+            --text-status-modified: #89b4fa;
+            --text-status-info: #cdd6f4;
+            --text-kbd: #cdd6f4;
+            --text-link-arrow: #585b70;
+            --border-kbd: #45475a;
+            --border-kbd-bottom: #585b70;
+            --shadow-kbd: #585b70;
+        }
+        [data-theme="light"] {
+            --bg-body: #f7f7f7;
+            --bg-switch-on: #dfd;
+            --bg-switch-off: #ddd;
+            --bg-hover: #fdfdfd;
+            --bg-exception: #ffaaaa;
+            --bg-kbd: #fafbfc;
+            --text-default: #000;
+            --text-status-combined: #008800;
+            --text-status-deleted: #bb0000;
+            --text-status-ignored: #555555;
+            --text-status-modified: #0000bb;
+            --text-status-info: black;
+            --text-kbd: #444d56;
+            --text-link-arrow: #aaa;
+            --border-kbd: #c6cbd1;
+            --border-kbd-bottom: #959da5;
+            --shadow-kbd: #959da5;
+        }
         .display-none {
             display: none;
         }
         body {
             width: 320px;
-            background-color: #f7f7f7;
+            background-color: var(--bg-body);
+            color: var(--text-default);
             font-size: 75%;
         }
         code, kbd, .code {
@@ -23,7 +102,7 @@
         }
         a[data-options-link]::after {
             content: ' ⌾';
-            color: #aaa;
+            color: var(--text-link-arrow);
         }
         .slim p {
             margin: .3em;
@@ -36,13 +115,13 @@
             display: inline-block;
             padding: 3px 5px;
             font-size: 10px;
-            color: #444d56;
+            color: var(--text-kbd);
             vertical-align: baseline;
-            background-color: #fafbfc;
-            border: solid 1px #c6cbd1;
-            border-bottom-color: #959da5;
+            background-color: var(--bg-kbd);
+            border: solid 1px var(--border-kbd);
+            border-bottom-color: var(--border-kbd-bottom);
             border-radius: 3px;
-            box-shadow: inset 0 -1px 0 #959da5;
+            box-shadow: inset 0 -1px 0 var(--shadow-kbd);
         }
         kbd:empty::after {
             content: '无快捷键';
@@ -70,14 +149,14 @@
             vertical-align: middle;
         }
         #switch {
-            border: black 1px solid;
+            border: var(--text-default) 1px solid;
             border-radius: 3px;
         }
         #switch.on {
-            background-color: #dfd;
+            background-color: var(--bg-switch-on);
         }
         #switch.off {
-            background-color: #ddd;
+            background-color: var(--bg-switch-off);
         }
         #hint-text {
             text-align: center;
@@ -89,7 +168,7 @@
             table-layout: fixed;
         }
         tr:hover {
-            background-color: #fdfdfd;
+            background-color: var(--bg-hover);
         }
         #result td:nth-child(1) {
             width: 4em;
@@ -109,7 +188,7 @@
             padding: 3px 0 3px 0;
         }
         #result tr.first-item td {
-            border-top: 1px solid #aaa;
+            border-top: 1px solid var(--border-kbd);
         }
         #result tr.first-item td:first-child {
             font-weight: bold;
@@ -121,29 +200,29 @@
             font-size: 13px;
         }
         #exception {
-            background-color: #ffaaaa;
+            background-color: var(--bg-exception);
             overflow: auto;
             padding-left: 1em;
             margin-top: 1em;
         }
         .status-header-combined.first-item td:first-child:after {
-            color: #008800;
+            color: var(--text-status-combined);
             content: "已合并";
         }
         .status-header-deleted.first-item td:first-child::after {
-            color: #bb0000;
+            color: var(--text-status-deleted);
             content: "已删除";
         }
         .status-header-ignored.first-item td:first-child::after {
-            color: #555555;
+            color: var(--text-status-ignored);
             content: "已忽略";
         }
         .status-header-modified.first-item td:first-child::after {
-            color: #0000bb;
+            color: var(--text-status-modified);
             content: "已修改";
         }
         .status-header-info.first-item td:first-child::after {
-            color: black;
+            color: var(--text-status-info);
             content: "* 信息";
         }
         .status-time {

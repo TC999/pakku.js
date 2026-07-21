@@ -5,8 +5,111 @@
     <title>pakku :: 选项</title>
     <link rel="stylesheet" href="/assets/icomoon/icon.css">
     <style>
+        :root {
+            --bg-body: #f7f7f7;
+            --bg-hover: #fcfcfc;
+            --bg-advanced: rgba(0, 0, 255, .08);
+            --bg-saved: black;
+            --bg-note: yellow;
+            --bg-note-hover: lightyellow;
+            --text-default: #000;
+            --text-link: #000077;
+            --text-code: #007700;
+            --text-warning: rgba(0,0,0,.8);
+            --text-warning-bold: #770000;
+            --text-saved: white;
+            --text-highlighter: #3b6;
+            --text-darkblue: darkblue;
+            --border-default: #aaa;
+            --border-note: black;
+            --border-donate: #666;
+            --border-img-active: #00aa00;
+            --border-img-inactive: #ff4444;
+            --shadow-hover: rgba(0,0,0,.3);
+            --hl-bg-from: #3fa;
+            --hl-bg-to: #3fa;
+            --hl-text: #000;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #1e1e2e;
+                --bg-hover: #2a2a3e;
+                --bg-advanced: rgba(100, 140, 255, .12);
+                --bg-saved: #cdd6f4;
+                --bg-note: #2d2d44;
+                --bg-note-hover: #3a3a55;
+                --text-default: #cdd6f4;
+                --text-link: #89b4fa;
+                --text-code: #a6e3a1;
+                --text-warning: rgba(205, 214, 244, .75);
+                --text-warning-bold: #f38ba8;
+                --text-saved: #1e1e2e;
+                --text-highlighter: #a6e3a1;
+                --text-darkblue: #89b4fa;
+                --border-default: #45475a;
+                --border-note: #585b70;
+                --border-donate: #45475a;
+                --border-img-active: #a6e3a1;
+                --border-img-inactive: #f38ba8;
+                --shadow-hover: rgba(0,0,0,.5);
+                --hl-bg-from: #2a5a3a;
+                --hl-bg-to: #2a5a3a;
+                --hl-text: #a6e3a1;
+            }
+        }
+        [data-theme="dark"] {
+            --bg-body: #1e1e2e;
+            --bg-hover: #2a2a3e;
+            --bg-advanced: rgba(100, 140, 255, .12);
+            --bg-saved: #cdd6f4;
+            --bg-note: #2d2d44;
+            --bg-note-hover: #3a3a55;
+            --text-default: #cdd6f4;
+            --text-link: #89b4fa;
+            --text-code: #a6e3a1;
+            --text-warning: rgba(205, 214, 244, .75);
+            --text-warning-bold: #f38ba8;
+            --text-saved: #1e1e2e;
+            --text-highlighter: #a6e3a1;
+            --text-darkblue: #89b4fa;
+            --border-default: #45475a;
+            --border-note: #585b70;
+            --border-donate: #45475a;
+            --border-img-active: #a6e3a1;
+            --border-img-inactive: #f38ba8;
+            --shadow-hover: rgba(0,0,0,.5);
+            --hl-bg-from: #2a5a3a;
+            --hl-bg-to: #2a5a3a;
+            --hl-text: #a6e3a1;
+        }
+        [data-theme="light"] {
+            --bg-body: #f7f7f7;
+            --bg-hover: #fcfcfc;
+            --bg-advanced: rgba(0, 0, 255, .08);
+            --bg-saved: black;
+            --bg-note: yellow;
+            --bg-note-hover: lightyellow;
+            --text-default: #000;
+            --text-link: #000077;
+            --text-code: #007700;
+            --text-warning: rgba(0,0,0,.8);
+            --text-warning-bold: #770000;
+            --text-saved: white;
+            --text-highlighter: #3b6;
+            --text-darkblue: darkblue;
+            --border-default: #aaa;
+            --border-note: black;
+            --border-donate: #666;
+            --border-img-active: #00aa00;
+            --border-img-inactive: #ff4444;
+            --shadow-hover: rgba(0,0,0,.3);
+            --hl-bg-from: #3fa;
+            --hl-bg-to: #3fa;
+            --hl-text: #000;
+        }
         body {
-            background-color: #f7f7f7;
+            background-color: var(--bg-body);
+            color: var(--text-default);
             font-family: '微软雅黑', 'Microsoft Yahei', '宋体', sans-serif;
             min-width: 800px;
             margin: 0;
@@ -19,13 +122,13 @@
             font-family: SimHei, "Microsoft JhengHei", Arial, Helvetica, sans-serif;
         }
         a {
-            color: #000077;
+            color: var(--text-link);
             text-decoration: none;
-            border-bottom: 1px solid #000077;
+            border-bottom: 1px solid var(--text-link);
         }
         hr {
             border: initial;
-            border-top: 1px solid #aaa;
+            border-top: 1px solid var(--border-default);
             margin: 2em 0 2em 0;
         }
         #title {
@@ -42,8 +145,8 @@
             font-weight: bold;
         }
         code {
-            color: #007700;
-            border-bottom: 1px dashed #007700;
+            color: var(--text-code);
+            border-bottom: 1px dashed var(--text-code);
         }
         code, .code {
             font-family: Consolas, Courier, '微软雅黑', 'Microsoft Yahei', monospace;
@@ -55,7 +158,7 @@
         p.warning {
             margin-top: -.7em;
             margin-left: 3em;
-            color: rgba(0,0,0,.8);
+            color: var(--text-warning);
             font-size: .85em;
         }
         p.warning a {
@@ -63,8 +166,8 @@
             border-color: inherit;
         }
         p.warning b {
-            color: #770000;
-            border-bottom: 1px solid black;
+            color: var(--text-warning-bold);
+            border-bottom: 1px solid var(--text-default);
         }
         table {
             border-spacing: 0;
@@ -74,11 +177,11 @@
             transition: box-shadow 200ms, background-color 200ms;
         }
         tr:hover:not(#title) {
-            background-color: #fcfcfc;
-            box-shadow: 0 2px 25px rgba(0,0,0,.3);
+            background-color: var(--bg-hover);
+            box-shadow: 0 2px 25px var(--shadow-hover);
         }
         td {
-            border-top: 1px solid #aaa;
+            border-top: 1px solid var(--border-default);
             padding: 1em;
         }
         td:nth-child(1), td:nth-child(4) {
@@ -105,7 +208,7 @@
         }
         .list:empty::after {
             content: "（列表为空）";
-            color: rgba(0,0,0,.8);
+            color: var(--text-warning);
         }
         .list code[contenteditable]:not(:focus) {
             cursor: pointer;
@@ -129,8 +232,8 @@
             text-align: left;
             padding-left: 10px;
             border-radius: 5px;
-            background-color: black;
-            color: white;
+            background-color: var(--bg-saved);
+            color: var(--text-saved);
         }
         #saved-alert.saved-hidden {
             right: -110px;
@@ -151,13 +254,13 @@
             display: inline-block;
         }
         .darkblue, .icon-image {
-            color: darkblue;
+            color: var(--text-darkblue);
         }
         .img-active {
-            border: 2px solid #00aa00;
+            border: 2px solid var(--border-img-active);
         }
         .img-inactive {
-            border: 2px solid #ff4444;
+            border: 2px solid var(--border-img-inactive);
             filter: brightness(.8) contrast(.5);
             -webkit-filter: brightness(.8) contrast(.5);
         }
@@ -171,15 +274,15 @@
             float: left;
             animation: highlight-blink 1s 2;
             text-align: right;
-            color: #3b6;
+            color: var(--text-highlighter);
         }
         #highlighter::after {
             content: '→';
         }
         @keyframes highlight-blink {
-            from {background-color: #3fa; color: #000;}
+            from {background-color: var(--hl-bg-from); color: var(--hl-text);}
             50% {background-color: #3d7; color: #000;}
-            to {background-color: #3fa; color: #000;}
+            to {background-color: var(--hl-bg-to); color: var(--hl-text);}
         }
         #note-banner-container {
             position: sticky;
@@ -194,8 +297,8 @@
         }
         #note-banner-container a {
             display: block;
-            background-color: yellow;
-            border: 2px solid black;
+            background-color: var(--bg-note);
+            border: 2px solid var(--border-note);
             padding: 4px;
             margin: 4px;
             white-space: pre-wrap;
@@ -205,7 +308,7 @@
             cursor: pointer;
         }
         #note-banner-container a[href]:hover {
-            background-color: lightyellow;
+            background-color: var(--bg-note-hover);
         }
         #version-checker {
             font-size: .8em;
@@ -220,16 +323,29 @@
             display: initial;
             margin: auto;
             top: 0; bottom: 0; left: 0; right: 0;
-            border: 3px solid #666;
+            border: 3px solid var(--border-donate);
             pointer-events: none;
         }
         label[for=show-advanced], .advanced:not(.warning) {
-            background-color: rgba(0, 0, 255, .08);
+            background-color: var(--bg-advanced);
             border-inline: .2em solid transparent;
             border-radius: .3em;
         }
         body:not(.i-am-advanced) .advanced:not(.js-show-this) {
             display: none;
+        }
+        select, input, button {
+            background-color: var(--bg-body);
+            color: var(--text-default);
+            border: 1px solid var(--border-default);
+        }
+        button {
+            cursor: pointer;
+            padding: .2em .6em;
+            border-radius: 3px;
+        }
+        button:hover {
+            filter: brightness(1.1);
         }
     </style>
 </head>
@@ -574,6 +690,16 @@
                     </p>
                     <p class="advanced warning">
                         * 在视频页面点击 pakku 图标可以查看更详细的统计信息
+                    </p>
+                    <p>
+                        <label for="theme">界面主题</label>
+                        <select id="theme">
+                            <option value="auto">跟随系统</option>
+                            <option value="light">浅色</option>
+                            <option value="dark">深色</option>
+                        </select>
+                        <label for="theme">：</label>
+                        <span>选择扩展程序界面的配色方案</span>
                     </p>
                     <p class="advanced">
                         <input id="read-player-blacklist" type="checkbox">

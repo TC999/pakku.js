@@ -4,6 +4,18 @@ import {WorkerMaker} from '../core/worker_pool';
 
 let channel = process.env.PAKKU_CHANNEL;
 
+function apply_theme(theme: string) {
+    if(theme === 'auto') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.dataset['theme'] = theme;
+    }
+}
+
+get_config().then((config)=>{
+    apply_theme(config.THEME);
+});
+
 let debug = document.getElementById('debug')!;
 let error = document.getElementById('error')!;
 
