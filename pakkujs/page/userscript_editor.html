@@ -4,50 +4,16 @@
         <meta charset="utf-8">
         <title>pakku :: 用户脚本</title>
         <style>
-            :root {
-                --bg-body: #fff;
-                --text-default: #000;
-                --text-warning: red;
-                --bg-textarea: #fff;
-                --border-textarea: #ccc;
-            }
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --bg-body: #1e1e2e;
-                    --text-default: #cdd6f4;
-                    --text-warning: #f38ba8;
-                    --bg-textarea: #2a2a3e;
-                    --border-textarea: #45475a;
-                }
-            }
-            [data-theme="dark"] {
-                --bg-body: #1e1e2e;
-                --text-default: #cdd6f4;
-                --text-warning: #f38ba8;
-                --bg-textarea: #2a2a3e;
-                --border-textarea: #45475a;
-            }
-            [data-theme="light"] {
-                --bg-body: #fff;
-                --text-default: #000;
-                --text-warning: red;
-                --bg-textarea: #fff;
-                --border-textarea: #ccc;
-            }
-            body {
-                background-color: var(--bg-body);
-                color: var(--text-default);
-            }
             textarea {
                 width: 100%;
                 box-sizing: border-box;
                 height: 400px;
-                background-color: var(--bg-textarea);
-                color: var(--text-default);
-                border: 1px solid var(--border-textarea);
+                background-color: #fff;
+                color: #000;
+                border: 1px solid #ccc;
             }
             .warning {
-                color: var(--text-warning);
+                color: red;
                 font-weight: bold;
             }
             details {
@@ -59,6 +25,20 @@
             }
             #sandbox {
                 display: none;
+            }
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #1e1e2e;
+                    color: #cdd6f4;
+                }
+                textarea {
+                    background-color: #2a2a3e;
+                    color: #cdd6f4;
+                    border-color: #45475a;
+                }
+                .warning {
+                    color: #f38ba8;
+                }
             }
         </style>
     </head>

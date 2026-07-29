@@ -344,14 +344,6 @@ function set_select_value(elem: HTMLSelectElement, value: number, ui_pfx = '', u
     elem.value = ''+value;
 }
 
-function apply_theme(theme: Config['THEME']) {
-    if(theme === 'auto') {
-        document.documentElement.removeAttribute('data-theme');
-    } else {
-        document.documentElement.dataset['theme'] = theme;
-    }
-}
-
 function loadconfig() {
     id('show-advanced').checked = config.ADVANCED_USER;
     // 弹幕合并
@@ -392,9 +384,6 @@ function loadconfig() {
     id('popup-badge').value = config.POPUP_BADGE;
     id('combine-threads').value = config.COMBINE_THREADS;
     id('read-player-blacklist').checked = config.READ_PLAYER_BLACKLIST;
-    id('theme').value = config.THEME;
-
-    apply_theme(config.THEME);
 
     // advanced options
     if(id('show-advanced').checked) document.body.classList.add('i-am-advanced');
@@ -613,9 +602,6 @@ function update(this: HTMLInputElement) {
     config.POPUP_BADGE = id('popup-badge').value;
     config.COMBINE_THREADS = safe_int(id('combine-threads').value, 0, null, DEFAULT_CONFIG.COMBINE_THREADS);
     config.READ_PLAYER_BLACKLIST = id('read-player-blacklist').checked;
-    config.THEME = id('theme').value as Config['THEME'];
-
-    apply_theme(config.THEME);
 
     if(this.id === 'break-update') {
         if(this.checked)
@@ -643,7 +629,7 @@ for(let elem of [
     // 实验室
     'break-update', 'takeover-aijudge', 'scroll-threshold',
     // 其他
-    'popup-badge', 'combine-threads', 'read-player-blacklist', 'theme',
+    'popup-badge', 'combine-threads', 'read-player-blacklist',
 ]) {
     id(elem).addEventListener('change', update);
 }

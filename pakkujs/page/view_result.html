@@ -4,44 +4,24 @@
         <meta charset="utf-8">
         <title>pakku :: 弹幕处理结果</title>
         <style>
-            :root {
-                --bg-body: #fff;
-                --text-default: #000;
-                --border-fieldset: #ccc;
-                --bg-fieldset: transparent;
-            }
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --bg-body: #1e1e2e;
-                    --text-default: #cdd6f4;
-                    --border-fieldset: #45475a;
-                    --bg-fieldset: #2a2a3e;
-                }
-            }
-            [data-theme="dark"] {
-                --bg-body: #1e1e2e;
-                --text-default: #cdd6f4;
-                --border-fieldset: #45475a;
-                --bg-fieldset: #2a2a3e;
-            }
-            [data-theme="light"] {
-                --bg-body: #fff;
-                --text-default: #000;
-                --border-fieldset: #ccc;
-                --bg-fieldset: transparent;
-            }
-            body {
-                background-color: var(--bg-body);
-                color: var(--text-default);
-            }
             fieldset {
                 min-inline-size: inherit;
-                border: 1px solid var(--border-fieldset);
-                background-color: var(--bg-fieldset);
+                border: 1px solid #ccc;
+                background-color: transparent;
             }
             pre {
                 font-family: Consolas, Courier, '微软雅黑', 'Microsoft Yahei', '宋体', monospace;
                 word-break: break-all;
+            }
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #1e1e2e;
+                    color: #cdd6f4;
+                }
+                fieldset {
+                    border-color: #45475a;
+                    background-color: #2a2a3e;
+                }
             }
         </style>
     </head>

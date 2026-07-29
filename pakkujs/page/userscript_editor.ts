@@ -1,18 +1,6 @@
 import {get_config, save_config} from '../background/config';
 import {get_state, save_state, remove_state} from '../background/state';
 
-function apply_theme(theme: string) {
-    if(theme === 'auto') {
-        document.documentElement.removeAttribute('data-theme');
-    } else {
-        document.documentElement.dataset['theme'] = theme;
-    }
-}
-
-get_config().then((config)=>{
-    apply_theme(config.THEME);
-});
-
 let $save = document.querySelector('#save') as HTMLButtonElement;
 let $clear = document.querySelector('#clear') as HTMLButtonElement;
 let $editor = document.querySelector('#editor') as HTMLTextAreaElement;

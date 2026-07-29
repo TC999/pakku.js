@@ -3,9 +3,7 @@ import {compress_all, decompress_all} from "./compressor";
 
 export const DEFAULT_CONFIG = {
     _LAST_UPDATE_TIME: 0,
-    _CONFIG_VER: 6,
-
-    THEME: 'auto' as ('auto' | 'light' | 'dark'),
+    _CONFIG_VER: 5,
 
     ADVANCED_USER: false,
 
@@ -174,13 +172,6 @@ export function migrate_config(remote_config: AnyObject): Config {
 
         config.FORCELIST_APPLY_SINGULAR = DEFAULT_CONFIG.FORCELIST_APPLY_SINGULAR;
         config.FORCELIST_CONTINUE_ON_MATCH = DEFAULT_CONFIG.FORCELIST_CONTINUE_ON_MATCH;
-    }
-
-    // 5 -> 6
-    if(config._CONFIG_VER < 6) {
-        config._CONFIG_VER = 6;
-
-        config.THEME = DEFAULT_CONFIG.THEME;
     }
 
     return {...DEFAULT_CONFIG, ...config};

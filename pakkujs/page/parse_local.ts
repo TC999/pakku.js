@@ -1,20 +1,6 @@
 import {Egress, Ingress} from "../protocol/interface";
 import {AjaxResponse} from "../core/types";
 
-import {get_config} from '../background/config';
-
-function apply_theme(theme: string) {
-    if(theme === 'auto') {
-        document.documentElement.removeAttribute('data-theme');
-    } else {
-        document.documentElement.dataset['theme'] = theme;
-    }
-}
-
-get_config().then((config)=>{
-    apply_theme(config.THEME);
-});
-
 let $sandbox = document.querySelector('#sandbox') as HTMLIFrameElement;
 let $container = document.querySelector('#result-container') as HTMLElement;
 let $download_btn = document.querySelector('#download-btn') as HTMLElement;
